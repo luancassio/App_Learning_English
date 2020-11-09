@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./attempts.component.css']
 })
 export class AttemptsComponent{
+   emptyHeart:string = "/assets/coracao_vazio.png";
+   fullHeart:string = "/assets/coracao_cheio.png";
+
+   
 
 
 }
