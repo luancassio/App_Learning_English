@@ -1,4 +1,6 @@
 import { Component } from '@angular/core'
+import { Phrase } from '../shared/phrase.model'
+import { phrases } from './phrase-mock'
 
 @Component({
     selector: 'app-panel',
@@ -8,4 +10,10 @@ import { Component } from '@angular/core'
 
 export class PanelComponent{
     
+instruction: string = "Traduza a frase:"
+p: Phrase[] = phrases;
+
+    constructor(){
+        
+    }
 }
