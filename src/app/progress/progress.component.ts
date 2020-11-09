@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-progress',
@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class ProgressComponent{
 
+  @Input() progress: number = 0;
  
 
 }

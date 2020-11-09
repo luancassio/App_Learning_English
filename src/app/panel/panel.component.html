@@ -4,7 +4,7 @@
         <div class="row">
 
             <div class="col-sm-6">
-                <app-progress></app-progress>
+                <app-progress [progress]="progress"></app-progress>
             </div>
             <div class="col-sm-6">
                 <div class="d-flex justify-content-end">  
@@ -14,14 +14,14 @@
             <div class="row">
                 <div class="col">
                     <h6>{{ instruction }}</h6>
-                    <p>{{ p[8].phraseEnglish }}</p>
+                    <p>{{ roundPhrases.phraseEnglish }}</p>
                     <div class="form-group">
-                        <textarea class="form-control"  rows="3" cols="148"></textarea>
+                        <textarea class="form-control"  rows="3" cols="148" (input)="updateResponse($event)"></textarea>
                       </div>
                       <div class="row">
                         <div class="col">
                             <div class="d-flex justify-content-end">  
-                                <button type="button" class="btn btn-primary">Verificar</button>
+                                <button type="button" class="btn btn-primary" (click)="checkAnswer()">Verificar</button>
                             </div> 
                             </div>
                         </div>

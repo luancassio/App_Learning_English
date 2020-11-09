@@ -2,7 +2,7 @@ import { Phrase } from '../shared/phrase.model';
 
 export const phrases: Phrase[] = [
     {phraseEnglish: "I like to learn", phrasePortuguese: "Eu gosto de aprender"},
-    {phraseEnglish: "I watch tv", phrasePortuguese: "Eu assito tv"},
+    {phraseEnglish: "I watch tv", phrasePortuguese: "Eu assisto tv"},
     {phraseEnglish: "Good morningn", phrasePortuguese: "Bom dia"},
     {phraseEnglish: "What time is it?", phrasePortuguese: "Que horas são?"},
     {phraseEnglish: "Are you awake?", phrasePortuguese: "Você está acordado?"},
