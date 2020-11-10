@@ -1,4 +1,4 @@
-# App Aprendendo Inglês
+# Aprendendo Inglês
 
 ## Esse e uma aplicação que fiz com base do que aprendi em curso de Angular com TypeScrip
 
