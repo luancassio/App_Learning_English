@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="d-flex justify-content-end">  
-                    <app-attempts></app-attempts>
+                    <app-attempts [attempts]="attempts" ></app-attempts>
                 </div>
             </div>
             <div class="row">
@@ -16,7 +16,7 @@
                     <h6>{{ instruction }}</h6>
                     <p>{{ roundPhrases.phraseEnglish }}</p>
                     <div class="form-group">
-                        <textarea class="form-control"  rows="3" cols="148" (input)="updateResponse($event)"></textarea>
+                        <textarea class="form-control"  rows="3" cols="148" (input)="updateResponse($event)" [value]="answer"></textarea>
                       </div>
                       <div class="row">
                         <div class="col">

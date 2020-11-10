@@ -8,42 +8,64 @@ import { phrases } from './phrase-mock'
     styleUrls: ['./panel.component.css']
 })
 
-export class PanelComponent{
-    
-instruction: string = "Traduza a frase:"
-p: Phrase[] = phrases;
-answer: string;
-round: number = 0;
-roundPhrases: Phrase;
-progress: number = 0
+export class PanelComponent {
 
-    constructor(){
+    instruction: string = "Traduza a frase:"
+    p: Phrase[] = phrases;
+    answer: string = "";
+    round: number = 0;
+    roundPhrases: Phrase;
+    progress: number = 0
+    attempts = 3;
 
-        this.roundPhrases = this.p[this.round];
-        console.log(this.round)
+    constructor() {
 
+        this.updateRound();
     }
 
+    //captura a frase digitada pelo usuario
     updateResponse(capturedText: Event): void {
 
         this.answer = (<HTMLInputElement>capturedText.target).value;
     }
 
-    checkAnswer(): void{
-        if (this.roundPhrases.phrasePortuguese.toLowerCase().trim() == this.answer.toLowerCase().trim()) {
-            this.round = Math.floor(Math.random() * this.p.length);
-
-            alert("Parabéns você acertou!")
-            this.roundPhrases = this.p[this.round];
-            this.progress = this.progress + (this.p.length /10);
-            //this.progress = this.progress + 25; 
-            
-console.log(this.progress = this.progress + (this.p.length /10))
-        } else {
-            alert("Ops você errou!")
-            
-        }
-  
+    //define frase da rodada e limpra o textarea
+    updateRound() {
+        this.roundPhrases = this.p[this.round];
+        this.answer = "";
 
     }
-}
+
+    //verifica se a resposta digitada e mesma que tem no mock
+    checkAnswer(): void {
+
+        try {
+
+            if (this.roundPhrases.phrasePortuguese.toLowerCase().trim() == this.answer.toLowerCase().trim()) {
+                this.round = Math.floor(Math.random() * this.p.length);
+
+                alert("Parabéns você acertou!")
+                this.progress = this.progress + 20;
+                this.updateRound()
+
+                if (this.progress === 100) {
+                    alert("Parabéns Você Ganhou :)")
+                    this.updateRound()
+                    this.progress = 0
+                }
+
+            }else {
+                alert("Ops você errou!");
+                this.attempts--;    
+                if (this.attempts === 0) {
+                    alert("Você perdeu tem novamente :(")
+                    this.updateRound()
+                    this.progress = 0; 
+                }
+            }
+        } catch (error) {
+                console.log("checkAswers", error)
+            }
+        }
+    } 
+
