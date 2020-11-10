@@ -26,7 +26,7 @@ export class AttemptsComponent implements OnChanges {
         let i = this.hearts.length - this.attempts
         this.hearts[i - 1].full = false
 
-        if (this.attempts === 0) {
+        if (this.attempts === -1) {
           for (let i = 0; i < this.hearts.length; i++) {
             this.hearts[i].full = true;
           }

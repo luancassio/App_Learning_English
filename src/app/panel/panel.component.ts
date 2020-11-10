@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, EventEmitter, Output } from '@angular/core'
 import { Phrase } from '../shared/phrase.model'
 import { phrases } from './phrase-mock'
 
@@ -17,6 +17,7 @@ export class PanelComponent {
     roundPhrases: Phrase;
     progress: number = 0
     attempts = 3;
+    @Output() endGame: EventEmitter<string> = new EventEmitter();
 
     constructor() {
 
@@ -48,17 +49,17 @@ export class PanelComponent {
                 this.progress = this.progress + 20;
                 this.updateRound()
 
-                if (this.progress === 100) {
-                    alert("Parabéns Você Ganhou :)")
-                    this.updateRound()
-                    this.progress = 0
+                if (this.progress == 100) {
+                    this.endGame.emit("vitória");
+                    this.updateRound();
+                    this.progress = 0;
                 }
 
             }else {
                 alert("Ops você errou!");
                 this.attempts--;    
-                if (this.attempts === 0) {
-                    alert("Você perdeu tem novamente :(")
+                if (this.attempts === -1) {
+                    this.endGame.emit("perdeu");
                     this.updateRound()
                     this.progress = 0; 
                 }
